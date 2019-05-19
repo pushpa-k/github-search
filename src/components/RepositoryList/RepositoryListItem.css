@@ -1,0 +1,39 @@
+.repositoryListItem-wrapper {
+  padding-top: 15px;
+  border-bottom:1px solid #e1e4e8;
+  box-sizing: border-box;
+}
+
+.repositoryListItem-name {
+  font-weight: bold;
+  font-size: 22px;
+  letter-spacing: 1.5px;
+  margin-top: 40px;
+  margin-left: 25px;
+}
+
+.repositoryListItem-name a {
+  color: #0366d6;
+}
+
+.repositoryListItem-description {
+  margin: 15px 25px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.repositoryListItem-data {
+  font-size: 18px;
+  margin-left: 25px;
+  margin-bottom: 20px;
+}
+
+.repositoryListItem-data div  {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.repositoryListItem-data svg {
+  padding-right: 5px;
+}

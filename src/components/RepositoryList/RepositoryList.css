@@ -1,0 +1,50 @@
+.repositoryList {
+  width: 500px;
+  max-width: 85%;
+  margin: 0 auto;
+}
+
+.repositoryList-wrapper {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.repositoryList-header {
+  text-align: left;
+  margin-left: 25px;
+  padding-bottom: 10px;
+  border-bottom:1px solid #e1e4e8;
+}
+.inputError {
+  font-size:12px;
+  padding: 5px;
+}
+
+.repositoryList-button {
+  font-weight: 400;
+  font-size: 14px;
+  color: #6e7584;
+  padding: 7px;
+  border: 1px solid #73777f;
+  border-radius: 8px;
+  box-shadow: none;
+  cursor: pointer;
+}
+
+.repositoryList-caret {
+  padding: 3px;
+  margin: 2px 0 2px 8px;
+  border: solid #6e7584;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+}
+
+.repositoryList-button--showMore .repositoryList-caret {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+.repositoryList-button--showLess .repositoryList-caret {
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+}
