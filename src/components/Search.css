@@ -45,6 +45,11 @@
   font-size: 16px;
 }
 
+.search-button:disabled {
+  opacity: 0.7;
+  color: #ffffffbf;
+}
+
 .search-error {
   color: red;
   padding: 5px;

@@ -8,43 +8,42 @@ import './RepositoryList.css';
 const INITIAL_ROWS = 5;
 
 export class RepositoryList extends Component {
- constructor(props) {
-   super(props);
+  constructor(props) {
+    super(props);
 
-   this.state = {
-    reposToShow: INITIAL_ROWS,
-    expanded: false,
-    isSearchEmpty: false
-   }
-   this.showMore = this.showMore.bind(this);
+    this.state = {
+     reposToShow: INITIAL_ROWS,
+     expanded: false,
+     isSearchEmpty: false
+    }
+    this.showMore = this.showMore.bind(this);
+  }
 
- }
+  shouldComponentUpdate = (nextProps) => {
+    if (nextProps.isSearchEmpty !== this.props.isSearchEmpty) {
+      this.setState ({ isSearchEmpty: nextProps.isSearchEmpty });
+    }
+    return true;
+  }
 
- shouldComponentUpdate = (nextProps) => {
-   if (nextProps.isSearchEmpty !== this.props.isSearchEmpty) {
-     this.setState ({ isSearchEmpty: nextProps.isSearchEmpty });
-   }
-   return true;
- }
+  componentDidUpdate = (prevProps, prevState) => {
+    const currentSearch = this.props.repositories.searchTerm;
+    const prevSearch =  prevProps.repositories.searchTerm;
+    // Resets to 5 rows on new search
+    if (prevSearch && (prevSearch !== currentSearch)) {
+     this.setState({reposToShow: INITIAL_ROWS, expanded: false});
+    }
+  }
 
- componentDidUpdate = (prevProps, prevState) => {
-   const currentSearch = this.props.repositories.searchTerm;
-   const prevSearch =  prevProps.repositories.searchTerm;
-   // Resets to 5 rows on new search
-   if (prevSearch && (prevSearch !== currentSearch)) {
-    this.setState({reposToShow: INITIAL_ROWS, expanded: false});
-   }
- }
-
- showMore = () => {
-   const repos = this.props.repositories;
-   let repoLength = repos.length;
-   this.state.reposToShow === INITIAL_ROWS ? (
-     this.setState({ reposToShow: repoLength, expanded: true })
-   ) : (
-     this.setState({ reposToShow: INITIAL_ROWS, expanded: false })
-   )
- }
+  showMore = () => {
+    const repos = this.props.repositories;
+    let repoLength = repos.length;
+    this.state.reposToShow === INITIAL_ROWS ? (
+      this.setState({ reposToShow: repoLength, expanded: true })
+    ) : (
+      this.setState({ reposToShow: INITIAL_ROWS, expanded: false })
+    )
+  }
 
   renderError = () => {
     return (!this.state.isSearchEmpty && <div className="inputError">No repositories found!</div>);

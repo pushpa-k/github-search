@@ -10,7 +10,8 @@ export class Search extends Component {
     this.state = {
       searchTerm: '',
       language: 'Javascript', // default language
-      error: ''
+      error: '',
+      disabled: false
     }
   }
 
@@ -19,6 +20,11 @@ export class Search extends Component {
     const language = this.state.language;
     e.preventDefault();
     if (searchTerm && language) {
+      // Prevents additonal api requests if same search is initiated
+      if (this.state.disabled) {
+        return;
+      }
+      this.setState({disabled: true});
       // pass the searchTerm to our action creator.
       this.props.getRepository(searchTerm, language);
       this.setState({ error: '' })
@@ -31,11 +37,11 @@ export class Search extends Component {
   }
 
   handleInputChange = (e) => {
-    this.setState({ searchTerm: e.target.value });
+    this.setState({ searchTerm: e.target.value, disabled: false });
   }
 
   handleLanguageChange = (e) => {
-    this.setState({ language: e.target.value });
+    this.setState({ language: e.target.value, disabled: false });
   }
 
   renderLanguages = () => {
@@ -56,7 +62,7 @@ export class Search extends Component {
           <input className="search-bar" id="enterRepository" type="text" value={searchTerm} onChange={this.handleInputChange} />
           <label htmlFor="selectLanguage">Select language</label>
           <select onChange={this.handleLanguageChange} id="selectLanguage" className="search-language">{this.renderLanguages()}</select>
-          <button className="search-button" type="submit">Search</button>
+          <button className="search-button" type="submit" disabled={isLoading}>Search</button>
           {error && <div className="search-error">{error}</div>}
           {isLoading && <div className="search-loader"></div>}
         </div>

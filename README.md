@@ -16,6 +16,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## ToDo
 - Integrate CSS Preprocessor
-- Add more unit tests and integration tests
-- Disable Search button on click
 - Use selectors rather than bloating mapStateToProps
+- Lazy load project list
+- Add more unit tests and integration tests
